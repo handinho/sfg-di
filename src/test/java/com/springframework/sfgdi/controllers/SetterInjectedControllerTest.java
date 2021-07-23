@@ -1,6 +1,6 @@
 package com.springframework.sfgdi.controllers;
 
-import com.springframework.sfgdi.services.GreetingServiceImpl;
+import com.springframework.sfgdi.services.ConstructorGreetingService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +12,7 @@ class SetterInjectedControllerTest {
     void setUp() {
         // mimicking Spring DI
         controller = new SetterInjectedController();
-        controller.setGreetingService(new GreetingServiceImpl());
+        controller.setGreetingService(new ConstructorGreetingService());
     }
 
     @Test

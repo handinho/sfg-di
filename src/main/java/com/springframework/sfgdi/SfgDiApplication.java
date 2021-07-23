@@ -14,16 +14,10 @@ public class SfgDiApplication {
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(SfgDiApplication.class, args);
 
+		System.out.println("----------- Primary Bean");
 		// bean name is class name starting with a lowercase letter
 		MyController myController = (MyController)ctx.getBean("myController");
-
-		String greeting = myController.sayHello();
-		System.out.println(greeting);
-
-		/* OUTPUT:
-			Hello World!!!
-			Hi Folks!
-		 */
+		System.out.println(myController.getGreeting());
 
 		System.out.println("----------- Property Based");
 		PropertyInjectedController propertyInjectedController = (PropertyInjectedController) ctx.getBean("propertyInjectedController") ;
@@ -37,6 +31,17 @@ public class SfgDiApplication {
 		// no need for @Autowired annotation on constructors
 		ConstructorInjectedController constructorInjectedController = (ConstructorInjectedController) ctx.getBean("constructorInjectedController") ;
 		System.out.println(constructorInjectedController.getGreeting());
+
+		/* OUTPUT:
+			----------- Primary Bean
+			Hello world! - from PRIMARY bean
+			----------- Property Based
+			Hello World! - Property
+			----------- Setter Based
+			Hello World! - Setter
+			----------- Constructor Based
+			Hello world! - Constructor
+		 */
 	}
 
 }
