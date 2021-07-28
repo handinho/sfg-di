@@ -1,6 +1,7 @@
 package com.springframework.sfgdi;
 
 import com.springframework.sfgdi.controllers.ConstructorInjectedController;
+import com.springframework.sfgdi.controllers.I18nController;
 import com.springframework.sfgdi.controllers.MyController;
 import com.springframework.sfgdi.controllers.PropertyInjectedController;
 import com.springframework.sfgdi.controllers.SetterInjectedController;
@@ -13,6 +14,10 @@ public class SfgDiApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(SfgDiApplication.class, args);
+
+		System.out.println("----------- I18n Bean");
+        I18nController i18nController = (I18nController)ctx.getBean("i18nController");
+        System.out.println(i18nController.getGreeting());
 
 		System.out.println("----------- Primary Bean");
 		// bean name is class name starting with a lowercase letter
